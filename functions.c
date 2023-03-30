@@ -62,7 +62,7 @@ int print_string(va_list types, char buffer[],
 		if (flags & F_MINUS)
 		{
 			write(1, &str[0], length);
-			for (q = width - length; q > 0; i--)
+			for (q = width - length; q > 0; q--)
 				write(1, " ", 1);
 			return (width);
 		}
@@ -175,10 +175,10 @@ int print_binary(va_list types, char buffer[],
 	n = va_arg(types, unsigned int);
 	m = 2147483648; /* (2 ^ 31) */
 	a[0] = n / m;
-	for (i = 1; q < 32; q++)
+	for (q = 1; q < 32; q++)
 	{
 		m /= 2;
-		a[i] = (n / m) % 2;
+		a[q] = (n / m) % 2;
 	}
 	for (q = 0, sum = 0, count = 0; q < 32; q++)
 	{
